@@ -13,6 +13,7 @@ driver.implicitly_wait(30)
 pages = 3
 
 for page in range(1, pages+1):
+    #set url
     url = "https://ascentoutdoors.com/collections/sale-items?page="+ str(page)
     driver.get(url)
 
@@ -44,8 +45,6 @@ for page in range(1, pages+1):
             sale_price_list = driver.find_elements_by_id('ComparePrice-product-template')
             sale_price = sale_price_list[1].text
         except (NoSuchElementException, IndexError):
-            sale_price = "Not On Sale"
-        except IndexError:
             sale_price = "Not On Sale"
 
         #set retail price (there are multiple elements with the relevant id)
